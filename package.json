@@ -1,14 +1,50 @@
 {
   "name": "handy-utils",
   "version": "1.0.0",
-  "description": "A lightweight utility library with handy string, number, array, and object instance helpers.",
+  "description": "A lightweight utility library with handy string, number and array helpers.",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "build": "tsup",
+    "clean": "rm -rf dist"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./str": {
+      "types": "./dist/core/str.d.ts",
+      "import": "./dist/core/str.js",
+      "require": "./dist/core/str.cjs"
+    },
+    "./num": {
+      "types": "./dist/core/num.d.ts",
+      "import": "./dist/core/num.js",
+      "require": "./dist/core/num.cjs"
+    },
+    "./arr": {
+      "types": "./dist/core/arr.d.ts",
+      "import": "./dist/core/arr.js",
+      "require": "./dist/core/arr.cjs"
+    },
+    "./misc": {
+      "types": "./dist/core/arr.d.ts",
+      "import": "./dist/core/arr.js",
+      "require": "./dist/core/arr.cjs"
+    },
+    "./global": {
+      "types": "./dist/global.d.ts",
+      "import": "./dist/global.js",
+      "require": "./dist/global.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/geekygeeky/handy-utils.git"
