@@ -8,7 +8,11 @@
  * @version    1.0.0
  */
 
-export { };
+
+/**
+ *  ---- Global ----
+ */
+export const __$ensureGlobalPatch = true;
 declare global {
     interface String {
         $capitalize(): string;
@@ -26,10 +30,6 @@ declare global {
         $chunk(size: number): T[][];
     }
 }
-
-/**
- *  ---- Runtime patches ----
- */
 
 // String
 if (!String.prototype.$capitalize) {
