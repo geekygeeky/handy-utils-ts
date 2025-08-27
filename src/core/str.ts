@@ -13,26 +13,26 @@ export const capitalize = (str: string): string =>
 
 export const reverse = (str: string): string => [...str].reverse().join("");
 
-// 2. ucfirst (uppercase first letter, keep rest as-is)
-export const ucfirst = (str: string): string => {
+// * ucfirst (uppercase first letter, keep rest as-is)
+export const uc_first = (str: string): string => {
     if (!str) return "";
     return str[0].toUpperCase() + str.slice(1);
 }
 
-// 3. lcfirst (lowercase first letter, keep rest as-is)
-export const lcfirst = (str: string): string => {
+// * lcfirst (lowercase first letter, keep rest as-is)
+export const lc_first = (str: string): string => {
     if (!str) return "";
     return str[0].toLowerCase() + str.slice(1);
 }
 
-// 14. ucwords (uppercase first letter of each word)
-export const ucwords = (str: string): string => {
+// * uppercase first letter of each word
+export const uc_words = (str: string): string => {
     return str.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 
-// 8. str_pad (pad string to desired length)
-// padType: "left", "right", "both"
+// * str_pad (pad string to desired length)
+// * padType: "left", "right", "both"
 export const str_pad = (str: string, length: number, padChar = " ", padType: "left" | "right" | "both" = "right"): string => {
     const strLen = str.length;
     if (strLen >= length) return str;
@@ -51,8 +51,8 @@ export const str_pad = (str: string, length: number, padChar = " ", padType: "le
     }
 }
 
-// 9. str_shuffle (randomly shuffle characters in string)
-function str_shuffle(str: string): string {
+// * randomly shuffle characters in string
+export const str_shuffle = (str: string): string => {
     const arr = str.split('');
     for (let i = arr.length - 1; i > 0; i--) {
         // Fisher-Yates shuffle
@@ -62,19 +62,17 @@ function str_shuffle(str: string): string {
     return arr.join('');
 }
 
-// 11. strrev (reverse string)
-function strrev(str: string): string {
+export const str_rev = (str: string): string => {
     return str.split('').reverse().join('');
 }
 
-// 12. strip_tags (remove HTML tags)
-function strip_tags(str: string): string {
+// * strip_tags (remove HTML tags)
+export const strip_tags = (str: string): string => {
     return str.replace(/<\/?[^>]+(>|$)/g, "");
 }
 
-// 13. htmlspecialchars (escape &, <, >, ", ')
-// Note: this is a simple version, PHP has ENT_QUOTES etc
-function htmlspecialchars(str: string): string {
+// * html_special_chars (escape &, <, >, ", ')
+export const html_special_chars = (str: string): string => {
     const map: Record<string, string> = {
         '&': "&amp;",
         '<': "&lt;",
@@ -85,16 +83,60 @@ function htmlspecialchars(str: string): string {
     return str.replace(/[&<>"']/g, (m) => map[m]);
 }
 
-function strcasecmp(a: string, b: string): number {
-  a = a.toLowerCase();
-  b = b.toLowerCase();
-  if (a === b) return 0;
-  return a > b ? 1 : -1;
+export const str_case_cmp = (a: string, b: string): number => {
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+    if (a === b) return 0;
+    return a > b ? 1 : -1;
 }
 
-function ltrim(str: string, charlist = "\\s"): string {
-  return str.replace(new RegExp(`^[${charlist}]+`), "");
+export const ltrim = (str: string, charlist = "\\s"): string => {
+    return str.replace(new RegExp(`^[${charlist}]+`), "");
 }
-function rtrim(str: string, charlist = "\\s"): string {
-  return str.replace(new RegExp(`[${charlist}]+$`), "");
+export const rtrim = (str: string, charlist = "\\s"): string => {
+    return str.replace(new RegExp(`[${charlist}]+$`), "");
+}
+
+export const camel_case = (str: string): string => {
+    return str
+        .trim()
+        .toLowerCase()
+        .split(/[\s_-]+/)
+        .map((word, index) =>
+            index === 0 ? word : word[0].toUpperCase() + word.slice(1)
+        )
+        .join('');
+}
+
+export const kebab_case = (str: string): string => {
+    return str
+        .trim()
+        .toLowerCase()
+        .replace(/[\s_]+/g, '-')
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .replace(/-+/g, '-');
+}
+
+export const snake_case = (str: string): string => {
+    return str
+        .trim()
+        .toLowerCase()
+        .replace(/[\s-]+/g, '_')
+        .replace(/([a-z])([A-Z])/g, '$1_$2')
+        .replace(/_+/g, '_');
+}
+
+export const truncate = (str: string, maxLength: number): string => {
+    str = str.trim();
+    if (str.length <= maxLength) return str;
+    return str.slice(0, maxLength).trimEnd() + '…';
+}
+
+/**
+ * @desc convert string camel-case to kebab case.
+ * @example camel_case_to_kebab("geekyGeeky")
+ * @result geeky-geeky
+ */
+export const camel_case_to_kebab = (str: string): string => {
+    return str.replace(/([A-Z])/g, '-$1').toLowerCase();
 }

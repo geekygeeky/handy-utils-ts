@@ -68,7 +68,7 @@ export const parse_number = (value: unknown, fallback = 0): number => {
   return fallback;
 }
 
-export const sumNumbers = (...args: number[]) => args.reduce((prev, curr) => prev + curr, 0);
+export const sum_numbers = (...args: number[]) => args.reduce((prev, curr) => prev + curr, 0);
 
 // debounce
 export function debounce<T extends (...args: any[]) => void>(
@@ -103,7 +103,7 @@ export function sleep(ms: number): Promise<void> {
 }
 
 // isEmpty
-export const isEmpty = (value: any): boolean => {
+export const is_empty = (value: any): boolean => {
   if (value == null) return true;
 
   if (typeof value === 'string') return value.trim().length === 0;
@@ -115,8 +115,7 @@ export const isEmpty = (value: any): boolean => {
   return false;
 }
 
-
 // deepClone
-export const deepClone = <T>(obj: T): T => {
+export const deep_clone = <T>(obj: T): T => {
   return structuredClone ? structuredClone(obj) : JSON.parse(JSON.stringify(obj));
 }
