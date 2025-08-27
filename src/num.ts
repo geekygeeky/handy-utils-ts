@@ -1,3 +1,13 @@
+/**
+ * @package    handy-utils
+ * @file       num.ts
+ * @description Utility functions for working with numbers (e.g. is_float, number_format, etc.)
+ *
+ * @author     Olushola (Geeky Geeky)
+ * @license    MIT
+ * @version    1.0.0
+ */
+
 export const is_float = (value: unknown): boolean => {
     return typeof value === "number" && !Number.isInteger(value) && !Number.isNaN(value);
 }

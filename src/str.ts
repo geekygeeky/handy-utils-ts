@@ -1,3 +1,13 @@
+/**
+ * @package    handy-utils
+ * @file       str.ts
+ * @description Utility functions for working with strings (e.g. capitalize, ucfirst, etc.)
+ *
+ * @author     Olushola (Geeky Geeky)
+ * @license    MIT
+ * @version    1.0.0
+ */
+
 export const capitalize = (str: string): string =>
     str.length ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : str;
 

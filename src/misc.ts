@@ -1,14 +1,24 @@
+/**
+ * @package    handy-utils
+ * @file       misc.ts
+ * @description Miscellaneous functions for manipulating with numbers, strings and dates (e.g. random_int, format_date, etc.)
+ *
+ * @author     Olushola (Geeky Geeky)
+ * @license    MIT
+ * @version    1.0.0
+ */
+
 export const random_int = (min: number, max: number): number => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function is_date(value: unknown): boolean {
+export const is_date = (value: unknown): boolean => {
   return value instanceof Date && !isNaN(value.getTime());
 }
 
-function format_date(date: Date, withTime = true): string {
+export const format_date = (date: Date, withTime = true): string => {
   const pad = (n: number) => n.toString().padStart(2, "0");
   const y = date.getFullYear();
   const m = pad(date.getMonth() + 1);
@@ -20,17 +30,17 @@ function format_date(date: Date, withTime = true): string {
   return `${y}-${m}-${d} ${h}:${min}:${s}`;
 }
 
-function date_diff_in_days(date1: Date, date2: Date): number {
+export const date_diff_in_days = (date1: Date, date2: Date): number => {
   const msPerDay = 24 * 60 * 60 * 1000;
   const diff = Math.abs(date1.getTime() - date2.getTime());
   return Math.floor(diff / msPerDay);
 }
 
-function add_days(date: Date, days: number): Date {
+export const add_days = (date: Date, days: number): Date => {
   return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
 }
 
-function is_numeric(value: unknown): boolean {
+export const is_numeric = (value: unknown): boolean => {
   if (typeof value === 'number') {
     return !Number.isNaN(value) && Number.isFinite(value);
   }
@@ -40,7 +50,7 @@ function is_numeric(value: unknown): boolean {
   return false;
 }
 
-function parse_number(value: unknown, fallback = 0): number {
+export const parse_number = (value: unknown, fallback = 0): number => {
   if (typeof value === 'number' && !isNaN(value)) {
     return value;
   }
