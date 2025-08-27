@@ -1,0 +1,30 @@
+{
+  "name": "handy-utils",
+  "version": "1.0.0",
+  "description": "A lightweight utility library with handy string, number, array, and object instance helpers.",
+  "main": "main.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geekygeeky/handy-utils.git"
+  },
+  "keywords": [
+    "handy-utils",
+    "typescript",
+    "strings",
+    "helper-functions",
+    "arrays",
+    "numbers"
+  ],
+  "author": "Olushola (GeekyGeeky)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geekygeeky/handy-utils/issues"
+  },
+  "homepage": "https://github.com/geekygeeky/handy-utils#readme",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
