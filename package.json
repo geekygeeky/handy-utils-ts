@@ -1,5 +1,5 @@
 {
-  "name": "handy-utils",
+  "name": "handy-utils-ts",
   "version": "1.0.0",
   "description": "A lightweight utility library with handy string, number and array helpers.",
   "main": "./dist/index.cjs",
@@ -43,7 +43,9 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "repository": {
     "type": "git",
