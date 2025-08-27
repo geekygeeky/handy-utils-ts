@@ -33,7 +33,7 @@ export const ucwords = (str: string): string => {
 
 // 8. str_pad (pad string to desired length)
 // padType: "left", "right", "both"
-function str_pad(str: string, length: number, padChar = " ", padType: "left" | "right" | "both" = "right"): string {
+export const str_pad = (str: string, length: number, padChar = " ", padType: "left" | "right" | "both" = "right"): string => {
     const strLen = str.length;
     if (strLen >= length) return str;
 

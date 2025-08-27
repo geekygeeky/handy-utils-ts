@@ -67,3 +67,56 @@ export const parse_number = (value: unknown, fallback = 0): number => {
   }
   return fallback;
 }
+
+export const sumNumbers = (...args: number[]) => args.reduce((prev, curr) => prev + curr, 0);
+
+// debounce
+export function debounce<T extends (...args: any[]) => void>(
+  fn: T,
+  delay: number
+): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  return function (...args: Parameters<T>) {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), delay);
+  };
+}
+
+// throttle
+export const throttle = <T extends (...args: any[]) => void>(
+  fn: T,
+  limit: number
+): (...args: Parameters<T>) => void => {
+  let lastCall = 0;
+  return function (...args: Parameters<T>) {
+    const now = Date.now();
+    if (now - lastCall >= limit) {
+      lastCall = now;
+      fn(...args);
+    }
+  };
+}
+
+// sleep
+export function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// isEmpty
+export const isEmpty = (value: any): boolean => {
+  if (value == null) return true;
+
+  if (typeof value === 'string') return value.trim().length === 0;
+
+  if (Array.isArray(value)) return value.length === 0;
+
+  if (typeof value === 'object') return Object.keys(value).length === 0;
+
+  return false;
+}
+
+
+// deepClone
+export const deepClone = <T>(obj: T): T => {
+  return structuredClone ? structuredClone(obj) : JSON.parse(JSON.stringify(obj));
+}

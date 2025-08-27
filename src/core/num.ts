@@ -18,23 +18,23 @@ export const number_format = (number: number, decimals = 0, decPoint = ".", thou
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSep);
     return parts.join(decPoint);
 }
-function is_nan(value: unknown): boolean {
+export const is_nan = (value: unknown): boolean => {
     return typeof value === "number" && Number.isNaN(value);
 }
 
-function is_positive(value: number): boolean {
+export const is_positive = (value: number): boolean => {
     return typeof value === "number" && value > 0;
 }
 
-function is_negative(value: number): boolean {
+export const is_negative = (value: number): boolean => {
     return typeof value === "number" && value < 0;
 }
 
-function clamp(value: number, min: number, max: number): number {
-  return Math.min(Math.max(value, min), max);
+export const clamp = (value: number, min: number, max: number): number => {
+    return Math.min(Math.max(value, min), max);
 }
 
-function round(value: number, decimals = 0): number {
-  const factor = 10 ** decimals;
-  return Math.round(value * factor) / factor;
+export const round = (value: number, decimals = 0): number => {
+    const factor = 10 ** decimals;
+    return Math.round(value * factor) / factor;
 }
