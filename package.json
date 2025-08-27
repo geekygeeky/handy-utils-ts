@@ -2,7 +2,10 @@
   "name": "handy-utils",
   "version": "1.0.0",
   "description": "A lightweight utility library with handy string, number, array, and object instance helpers.",
-  "main": "main.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
@@ -25,6 +28,9 @@
   },
   "homepage": "https://github.com/geekygeeky/handy-utils#readme",
   "devDependencies": {
+    "@types/node": "^24.3.0",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
     "typescript": "^5.9.2"
   }
 }
