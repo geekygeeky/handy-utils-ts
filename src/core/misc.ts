@@ -104,7 +104,7 @@ export function sleep(ms: number): Promise<void> {
 
 // isEmpty
 export const is_empty = (value: any): boolean => {
-  if (value == null) return true;
+  if (value == null || value === undefined) return true;
 
   if (typeof value === 'string') return value.trim().length === 0;
 
